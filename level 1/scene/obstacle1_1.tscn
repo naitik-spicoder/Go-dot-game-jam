@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dojathbc381tl"]
+
+[ext_resource type="Texture2D" uid="uid://bcxcop3n8si" path="res://obstacle/block.png" id="1_mylkj"]
+[ext_resource type="Script" uid="uid://c3fo3x5b2oad6" path="res://level 1/script/obstacle_1_suprise.gd" id="1_vd0ea"]
+[ext_resource type="PackedScene" uid="uid://dyjtbfecv0s3j" path="res://level 1/scene/obstacle 1 collider.tscn" id="2_i1bnt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1bnt"]
+size = Vector2(24.75, 24)
+
+[node name="obstacle 1" type="Area2D"]
+script = ExtResource("1_vd0ea")
+
+[node name="Block" type="Sprite2D" parent="."]
+position = Vector2(138, 89)
+texture = ExtResource("1_mylkj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(113, 76)
+shape = SubResource("RectangleShape2D_i1bnt")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_i1bnt")]
+position = Vector2(-20, -17)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
